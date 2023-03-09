@@ -2,11 +2,11 @@ pipeline {
     agent any
     
     tools {
-        maven 'localMaven'
+        maven 'maven'
     }
     parameters {
-         string(name: 'tomcat_stag', defaultValue: '13.59.108.184', description: 'Node1-Remote Staging Server')
-         string(name: 'tomcat_prod', defaultValue: '18.219.228.98', description: 'Node2-Remote Production Server')
+         string(name: 'tomcat_stag', defaultValue: '10.0.4.115', description: 'Node1-Remote Staging Server')
+         //string(name: 'tomcat_prod', defaultValue: '18.219.228.98', description: 'Node2-Remote Production Server')
     }
 
     triggers {
@@ -34,11 +34,11 @@ stages{
                     }
                 }
 
-                stage ("Deploy to Production"){
-                    steps {
-                        sh "scp **/*.war jenkins@${params.tomcat_prod}:/usr/share/tomcat/webapps/"
-                    }
-                }
+               // stage ("Deploy to Production"){
+                //    steps {
+               //         sh "scp **/*.war jenkins@${params.tomcat_prod}:/usr/share/tomcat/webapps/"
+              //      }
+             //   }
             }
         }
     }
