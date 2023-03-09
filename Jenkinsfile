@@ -12,7 +12,7 @@ stages{
         stage('Build'){
             steps {
               //  sh 'mvn clean package'
-                  powershell ' \'mvn clean package\''                
+                  bat 'mvn clean package'                
             }
             post {
                 success {
@@ -27,7 +27,7 @@ stages{
                 stage ("Deploy to Staging"){
                     steps {
                     //  sh "scp -v -o StrictHostKeyChecking=no **/*.war root@${params.staging_server}:/opt/tomcat/webapps/"
-                        powershell 'copy StrictHostKeyChecking=no **/*.war root@${params.staging_server}:D:\\Gen\\Tom\\tom_test\\webapps\\'
+                        bat 'copy StrictHostKeyChecking=no **/*.war root@${params.staging_server}:D:\\Gen\\Tom\\tom_test\\webapps\\'
                     }
                 }
             }
